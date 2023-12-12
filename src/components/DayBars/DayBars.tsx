@@ -1,6 +1,3 @@
-'use client';
-
-import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import data from '@/store/data.json';
 
@@ -25,8 +22,8 @@ export default function DayBars() {
                 { data: humidity, label: 'Humidity' },
                 { data: CO2, label: 'CO2' },
             ]}
-            width={400}
-            height={250}
+            width={450}
+            height={300}
         />
     );
 }

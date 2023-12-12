@@ -1,6 +1,3 @@
-'use client';
-
-import * as React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import data from '@/store/data.json';
 
@@ -49,9 +46,8 @@ export default function HourlyChart() {
                     showMark: false,
                 },
             ]}
-            width={400}
-            height={250}
-            margin={{ left: 70 }}
+            width={450}
+            height={300}
         />
     );
 }
