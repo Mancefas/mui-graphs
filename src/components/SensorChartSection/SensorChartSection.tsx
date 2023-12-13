@@ -5,6 +5,7 @@ import { Paper, Box, Typography, IconButton, Stack } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import CloseIcon from '@mui/icons-material/Close';
 
 import DayBars from '../DayBars/DayBars';
 import HourlyChart from '../HourlyChart/HourlyChart';
@@ -23,7 +24,10 @@ export const SensorChartSection = ({}: SensorChartSectionProps) => {
     };
 
     return (
-        <Paper elevation={10} sx={{ p: '20px' }}>
+        <Paper
+            elevation={10}
+            sx={{ p: '20px', width: '500px', height: '60vh' }}
+        >
             <Stack direction="row" justifyContent="space-between">
                 <Typography variant="h5">
                     Duomenų pasiskirstymas laike
@@ -52,7 +56,11 @@ export const SensorChartSection = ({}: SensorChartSectionProps) => {
                         }
                         sx={{ p: 0 }}
                     >
-                        <EditCalendarIcon />
+                        {showingSelectRangeSection ? (
+                            <CloseIcon />
+                        ) : (
+                            <EditCalendarIcon />
+                        )}
                     </IconButton>
                 </Box>
             </Stack>
