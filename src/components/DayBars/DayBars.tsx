@@ -1,10 +1,5 @@
-import {
-    ResponsiveChartContainer,
-    BarPlot,
-    ChartsXAxis,
-    ChartsTooltip,
-} from '@mui/x-charts/BarChart';
-
+import * as React from 'react';
+import { BarChart } from '@mui/x-charts/BarChart';
 import data from '@/store/data.json';
 
 // getting data at 12:00 ( timestamp has +1:00) and getting only first 7 days
@@ -21,22 +16,19 @@ const CO2 = dataForDaysAt12.map((item) => item.CO2);
 
 export default function DayBars() {
     return (
-        <ResponsiveChartContainer
-            margin={{ bottom: 75 }}
-            series={[
-                { data: temp, label: 'Temperature', type: 'bar' },
-                { data: humidity, label: 'Humidity', type: 'bar' },
-                { data: CO2, label: 'CO2', type: 'bar' },
+        <BarChart
+            xAxis={[
+                {
+                    scaleType: 'band',
+                    data: xAxisDays,
+                    label: 'Dienos duomenys',
+                },
             ]}
-            xAxis={[{ scaleType: 'band', data: xAxisDays, id: 'x-axis-id' }]}
-        >
-            <BarPlot />
-            <ChartsXAxis
-                label="Savaitės dienos duomenys"
-                position="bottom"
-                axisId="x-axis-id"
-            />
-            <ChartsTooltip trigger="axis" />
-        </ResponsiveChartContainer>
+            series={[
+                { data: temp, label: 'Temperature' },
+                { data: humidity, label: 'Humidity' },
+                { data: CO2, label: 'CO2' },
+            ]}
+        />
     );
 }

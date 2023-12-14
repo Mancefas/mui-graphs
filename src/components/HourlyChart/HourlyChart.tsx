@@ -1,9 +1,4 @@
-import {
-    ResponsiveChartContainer,
-    ChartsXAxis,
-    ChartsTooltip,
-    AreaPlot,
-} from '@mui/x-charts/LineChart';
+import { LineChart } from '@mui/x-charts/LineChart';
 import data from '@/store/data.json';
 
 const dataForDay = data.filter((day) => day.timestamp.includes('2023-12-03'));
@@ -15,44 +10,44 @@ const Humidity = dataForDay.map((item) => item.humidity);
 
 export default function HourlyChart() {
     return (
-        <ResponsiveChartContainer
-            margin={{ bottom: 75 }}
-            series={[
-                {
-                    data: Temps,
-                    stack: 'total',
-                    area: true,
-                    type: 'line',
-                },
-                {
-                    data: Humidity,
-                    stack: 'total',
-                    area: true,
-                    type: 'line',
-                },
-                {
-                    data: CO2,
-                    stack: 'total',
-                    area: true,
-                    type: 'line',
-                },
-            ]}
+        <LineChart
+            leftAxis={null}
             xAxis={[
                 {
                     id: 'time',
                     data: time,
                     scaleType: 'time',
+                    label: 'Paros valandiniai duomenys',
+                    // valueFormatter: (date) => date.getFullYear().toString(),
                     valueFormatter: (date) => date.getHours().toString(),
                 },
             ]}
-        >
-            <AreaPlot />
-            <ChartsXAxis
-                label="Paros valandiniai duomenys"
-                position="bottom"
-                axisId="time"
-            />
-            <ChartsTooltip trigger="axis" />
-        </ResponsiveChartContainer>
+            series={[
+                {
+                    id: 'temperature',
+                    label: 'Temperature',
+                    data: Temps,
+                    stack: 'total',
+                    area: true,
+                    showMark: false,
+                },
+                {
+                    id: 'Humidity',
+                    label: 'Humidity',
+                    data: Humidity,
+                    stack: 'total',
+                    area: true,
+                    showMark: false,
+                },
+                {
+                    id: 'CO2',
+                    label: 'CO2',
+                    data: CO2,
+                    stack: 'total',
+                    area: true,
+                    showMark: false,
+                },
+            ]}
+        />
     );
 }

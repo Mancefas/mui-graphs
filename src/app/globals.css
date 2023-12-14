@@ -1,3 +1,11 @@
+:root {
+  /* Charts sizes */
+  --chartHeight: 350px;
+  --chartWidth: 400px;
+  --chartWidthResponsive: 80vw;
+  --rangePickerWidth: var(--chartWidth);
+}
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

@@ -5,19 +5,19 @@
 }
 
 .rangePickerContainer {
-    width: 400px;
+    width: var(--rangePickerWidth);
 }
 
 .chartsContainer {
-    height: 350px;
-    width: 400px;
+    height: var(--chartHeight);
+    width: var(--chartWidth);
 }
 
 
 @media screen and (max-width: 600px) {
     .rangePickerContainer,
     .chartsContainer {
-        width: 80vw;
+        width: var(--chartWidthResponsive);
     }
     
 }
