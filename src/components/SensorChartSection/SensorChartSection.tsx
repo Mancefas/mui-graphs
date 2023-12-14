@@ -10,7 +10,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import DayBars from '@/components/DayBars/DayBars';
 import HourlyChart from '@/components/HourlyChart/HourlyChart';
 import RangePickerSection from '@/components/RangePickerSection/RangePickerSection';
-import Chartx from '@/components/ChartTest/ChartTest';
+import RoomStateSection from '../RoomStateSection/RoomStateSection';
+import SensorStateSection from '../SensorStateSection/SensorStateSection';
 
 import classes from './SensorChartSection.module.css';
 
@@ -28,6 +29,8 @@ export const SensorChartSection = ({}: SensorChartSectionProps) => {
 
     return (
         <Paper elevation={10} className={classes.mainCard}>
+            <RoomStateSection />
+            <SensorStateSection />
             <Stack
                 justifyContent="space-between"
                 alignItems="center"
