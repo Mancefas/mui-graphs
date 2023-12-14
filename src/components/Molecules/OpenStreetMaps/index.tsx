@@ -1,5 +1,6 @@
 'use client';
 
+// there might be a problem for Open maps map, so this is the solution
 import dynamic from 'next/dynamic';
 import { Box, CircularProgress } from '@mui/material/';
 

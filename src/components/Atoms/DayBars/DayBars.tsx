@@ -17,6 +17,7 @@ const CO2 = dataForDaysAt12.map((item) => item.CO2);
 export default function DayBars() {
     return (
         <BarChart
+            leftAxis={null}
             xAxis={[
                 {
                     scaleType: 'band',
