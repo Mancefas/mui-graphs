@@ -1,14 +1,12 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Typography } from '@mui/material';
-import SensorStateSection from '@/components/Atoms/SensorStateSection/SensorStateSection';
-import RoomStateSection from '@/components/Atoms/RoomStateSection/RoomStateSection';
 
 import classes from './OpenStreetMaps.module.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 
-type OpenStreetMapsProps = {
+export type OpenStreetMapsProps = {
     handleOpen: () => void;
 };
 
