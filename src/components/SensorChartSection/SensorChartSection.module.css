@@ -1,0 +1,23 @@
+.mainCard {
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+}
+
+.rangePickerContainer {
+    width: 400px;
+}
+
+.chartsContainer {
+    height: 350px;
+    width: 400px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .rangePickerContainer,
+    .chartsContainer {
+        width: 80vw;
+    }
+    
+}
