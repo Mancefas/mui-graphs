@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
+import { temperatureColor, humidityColor, co2Color } from '@/store/common';
 import data from '@/store/data.json';
 
 // getting data at 12:00 ( timestamp has +1:00) and getting only first 7 days
@@ -26,9 +27,9 @@ export default function DayBars() {
                 },
             ]}
             series={[
-                { data: temp, label: 'Temperature' },
-                { data: humidity, label: 'Humidity' },
-                { data: CO2, label: 'CO2' },
+                { data: temp, label: 'Temperature', color: temperatureColor },
+                { data: humidity, label: 'Humidity', color: humidityColor },
+                { data: CO2, label: 'CO2', color: co2Color },
             ]}
         />
     );

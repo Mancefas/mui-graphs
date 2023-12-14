@@ -1,4 +1,5 @@
 import { LineChart } from '@mui/x-charts/LineChart';
+import { temperatureColor, humidityColor, co2Color } from '@/store/common';
 import data from '@/store/data.json';
 
 const dataForDay = data.filter((day) => day.timestamp.includes('2023-12-03'));
@@ -30,6 +31,7 @@ export default function HourlyChart() {
                     stack: 'total',
                     area: true,
                     showMark: false,
+                    color: temperatureColor,
                 },
                 {
                     id: 'Humidity',
@@ -38,6 +40,7 @@ export default function HourlyChart() {
                     stack: 'total',
                     area: true,
                     showMark: false,
+                    color: humidityColor,
                 },
                 {
                     id: 'CO2',
@@ -46,6 +49,7 @@ export default function HourlyChart() {
                     stack: 'total',
                     area: true,
                     showMark: false,
+                    color: co2Color,
                 },
             ]}
         />

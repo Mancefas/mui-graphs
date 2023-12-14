@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Modal, Box } from '@mui/material';
 import SensorDataCard from '@/components/Organisms/SensorDataCard/SensorDataCard';
 import OpenStreetMaps from '@/components/Molecules/OpenStreetMaps/OpenStreetMaps';
+import DynamicOpenMap from '@/components/Molecules/OpenStreetMaps';
 
 import styles from './page.module.css';
 
@@ -25,8 +26,8 @@ export default function Home() {
                 </Box>
             </Modal>
 
-            {/* <OpenMap /> */}
-            <OpenStreetMaps handleOpen={handleOpen} />
+            <DynamicOpenMap handleOpen={handleOpen} />
+            {/* <OpenStreetMaps handleOpen={handleOpen} /> */}
         </main>
     );
 }
