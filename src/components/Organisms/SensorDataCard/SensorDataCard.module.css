@@ -1,0 +1,8 @@
+.sensorDataCard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+}

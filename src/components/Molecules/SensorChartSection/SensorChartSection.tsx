@@ -1,17 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { Paper, Box, Typography, IconButton, Stack } from '@mui/material';
+import { Box, Typography, IconButton, Stack } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import CloseIcon from '@mui/icons-material/Close';
 
-import DayBars from '@/components/DayBars/DayBars';
-import HourlyChart from '@/components/HourlyChart/HourlyChart';
-import RangePickerSection from '@/components/RangePickerSection/RangePickerSection';
-import RoomStateSection from '../RoomStateSection/RoomStateSection';
-import SensorStateSection from '../SensorStateSection/SensorStateSection';
+import DayBars from '@/components/Atoms/DayBars/DayBars';
+import HourlyChart from '@/components/Atoms/HourlyChart/HourlyChart';
+import RangePickerSection from '@/components/Atoms/RangePickerSection/RangePickerSection';
 
 import classes from './SensorChartSection.module.css';
 
@@ -28,9 +26,7 @@ export const SensorChartSection = ({}: SensorChartSectionProps) => {
     };
 
     return (
-        <Paper elevation={10} className={classes.mainCard}>
-            <RoomStateSection />
-            <SensorStateSection />
+        <Box>
             <Stack
                 justifyContent="space-between"
                 alignItems="center"
@@ -79,6 +75,6 @@ export const SensorChartSection = ({}: SensorChartSectionProps) => {
             <Box className={classes.chartsContainer}>
                 {showingChart === 'hourly' ? <HourlyChart /> : <DayBars />}
             </Box>
-        </Paper>
+        </Box>
     );
 };
