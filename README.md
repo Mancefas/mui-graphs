@@ -3,3 +3,4 @@
 -   Next.js
 -   Material UI
 -   Material x-charts
+-   Leaflet with Open street maps
