@@ -1,43 +1,45 @@
 {
-  "name": "mui-graphs",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.19",
-    "@mui/material": "^5.14.20",
-    "@mui/material-nextjs": "^5.15.0",
-    "@mui/x-charts": "^6.18.3",
-    "@mui/x-date-pickers": "^6.18.4",
-    "dayjs": "^1.11.10",
-    "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.2",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-leaflet": "^4.2.1"
-  },
-  "devDependencies": {
-    "@next/eslint-plugin-next": "^14.0.4",
-    "@types/leaflet": "^1.9.8",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "eslint": "^8",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "14.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.33.2",
-    "typescript": "^5"
-  }
+    "name": "mui-graphs",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@emotion/cache": "^11.11.0",
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.14.19",
+        "@mui/material": "^5.14.20",
+        "@mui/material-nextjs": "^5.15.0",
+        "@mui/x-charts": "^6.18.3",
+        "@mui/x-date-pickers": "^6.18.4",
+        "dayjs": "^1.11.10",
+        "leaflet": "^1.9.4",
+        "leaflet-defaulticon-compatibility": "^0.1.2",
+        "mysql": "^2.18.1",
+        "next": "14.0.4",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-leaflet": "^4.2.1"
+    },
+    "devDependencies": {
+        "@next/eslint-plugin-next": "^14.0.4",
+        "@types/leaflet": "^1.9.8",
+        "@types/mysql": "^2.15.24",
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@typescript-eslint/eslint-plugin": "^6.14.0",
+        "@typescript-eslint/parser": "^6.14.0",
+        "eslint": "^8",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-next": "14.0.4",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-react": "^7.33.2",
+        "typescript": "^5"
+    }
 }
