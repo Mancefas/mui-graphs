@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import mysql from 'mysql';
+import mysql from 'mysql2';
 
 const dbConfig = {
     host: process.env.MYSQLHOST,
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
         });
 
     const performQuery = (query: string) =>
-        new Promise<any[]>((resolve, reject) => {
+        new Promise<any[] | any>((resolve, reject) => {
             connection.query(query, (err, results) => {
                 if (err) {
                     reject(err);
