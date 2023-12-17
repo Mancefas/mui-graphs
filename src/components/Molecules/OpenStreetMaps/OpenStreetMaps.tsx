@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
 
-import { pointsApiPoint } from '@/store/common';
 import { markerPointsType } from '@/types/markerPointsTypes';
+import { getPointsData } from '@/utils/getPointsData';
 import MapMarker from './MapMarker';
 
 import classes from './OpenStreetMaps.module.css';
@@ -9,26 +9,10 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 
-export type OpenStreetMapsProps = {
-    handleOpen: () => void;
-};
+export type OpenStreetMapsProps = {};
 
-async function getData() {
-    const res = await fetch(pointsApiPoint);
-
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data');
-    }
-
-    return res.json();
-}
-
-export default async function OpenStreetMaps({
-    handleOpen,
-}: OpenStreetMapsProps) {
-    const data = await getData();
-    // console.log(data);
+export default async function OpenStreetMaps({}: OpenStreetMapsProps) {
+    const data = await getPointsData();
 
     return (
         <MapContainer
