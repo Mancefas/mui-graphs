@@ -3,6 +3,7 @@ export type markerPointsType = {
     adress: string;
     description: string;
     idLocation: number;
+    idSensor: number;
     lastMeasure: Date;
     latitude: number;
     longitude: number;

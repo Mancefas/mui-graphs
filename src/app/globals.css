@@ -19,13 +19,13 @@
 
 
 /* option to change to dark hacky colors for open street map */
-.leaflet-layer,
+/* .leaflet-layer,
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
 .leaflet-control-attribution {
-  /* filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%); */
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
   filter: var(--leaflet-tile-filter);
-}
+} */
 
 /* :root {
   --max-width: 1100px;
