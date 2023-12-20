@@ -17,7 +17,6 @@ const MapMarker = ({
     operational,
     type,
 }: markerPointsType) => {
-    console.log(lastMeasure);
     return (
         <Marker
             position={[latitude, longitude]}
