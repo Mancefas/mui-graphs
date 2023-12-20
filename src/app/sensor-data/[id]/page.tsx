@@ -20,11 +20,8 @@ const SensorDataPage = async ({ params }: { params: { id: string } }) => {
                 {data &&
                     data.map(
                         (singleParameterData: singleItem[], key: number) => (
-                            <Grid2 xs={12} md={6} xl={4}>
-                                <DayHourlyChart
-                                    key={key}
-                                    array={singleParameterData}
-                                />
+                            <Grid2 key={key} xs={12} md={6} xl={4}>
+                                <DayHourlyChart array={singleParameterData} />
                             </Grid2>
                         )
                     )}
