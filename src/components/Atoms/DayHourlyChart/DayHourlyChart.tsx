@@ -29,7 +29,7 @@ export default function DayHourlyChart({ array }: DayHourlyChartTypes) {
 
     const seriesD = {
         id: array[0].name.toString(),
-        label: array[0].name,
+        label: `${array[0].name} (${array[0].measure})`,
         data: mapedData,
         area: true,
         stack: 'total',
@@ -37,27 +37,15 @@ export default function DayHourlyChart({ array }: DayHourlyChartTypes) {
         color: color,
     };
 
-    // const seriesMapped = array.map((item: any) => {
-    //     return {
-    //         id: item[0].name.toString(),
-    //         label: item[0].name,
-    //         data: item.map((item: any) => item.value),
-    //         area: true,
-    //         stack: 'total',
-    //         showMark: false,
-    //     };
-    // });
-
     return (
         <LineChart
-            leftAxis={null}
+            // leftAxis={null}
             xAxis={[
                 {
                     id: 'time',
                     data: time,
                     scaleType: 'time',
-                    label: `Matuoja ${array[0].measure}`,
-                    // valueFormatter: (date) => date.getFullYear().toString(),
+                    label: 'Valandos paroje',
                     valueFormatter: (date) => date.getUTCHours().toString(),
                 },
             ]}
