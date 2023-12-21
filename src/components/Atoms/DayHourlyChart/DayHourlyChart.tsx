@@ -55,7 +55,7 @@ export default function DayHourlyChart({ array }: DayHourlyChartTypes) {
                 {
                     id: 'time',
                     data: time,
-                    scaleType: 'utc',
+                    scaleType: 'time',
                     label: `Matuoja ${array[0].measure}`,
                     // valueFormatter: (date) => date.getFullYear().toString(),
                     valueFormatter: (date) => date.getUTCHours().toString(),
