@@ -20,14 +20,24 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { useGraphDayData } from '@/store/graphDayData';
+import DayPicker from '@/components/Atoms/DayPicker/DayPicker';
+
 export const drawerWidth = 240;
 
-const drawer = (
+const drawer = (date: string, updateDate: (value: string) => void) => (
     <div>
         <Toolbar />
         <Divider />
         <List>
-            {['Change day', 'Day range'].map((text, index) => (
+            <ListItem>
+                <DayPicker
+                    value={date}
+                    setValue={updateDate}
+                    label="Pakeisti datą"
+                />
+            </ListItem>
+            {['Day range'].map((text, index) => (
                 <ListItem key={text} disablePadding>
                     <ListItemButton>
                         <ListItemIcon>
@@ -40,7 +50,7 @@ const drawer = (
         </List>
         <Divider />
         <List>
-            {['Only 1 graph', 'Add upper max', 'Add upper max'].map(
+            {['Only 1 graph', 'Add upper max', 'Add lower max'].map(
                 (text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
@@ -58,6 +68,7 @@ const drawer = (
 
 const SideDrawer = ({ children }: { children: React.ReactNode }) => {
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+    const { date, updateDate } = useGraphDayData();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -104,7 +115,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                 variant="permanent"
                 anchor="left"
             >
-                {drawer}
+                {drawer(date, updateDate)}
             </Drawer>
 
             {/* On smaller screen */}
@@ -125,7 +136,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                     },
                 }}
             >
-                {drawer}
+                {drawer(date, updateDate)}
             </Drawer>
             <Box
                 component="main"
