@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { Typography, Stack, CircularProgress, Box } from '@mui/material';
+import { Typography, CircularProgress, Box } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import dayjs from 'dayjs';
 
 import DayHourlyChart from '@/components/Atoms/DayHourlyChart/DayHourlyChart';
 import { getDayData } from '@/utils/getDayData';
 import { DataItem } from '@/types/chartArray';
+import { drawerWidth } from '@/components/Molecules/SideDrawer/SideDrawer';
 import classes from './page.module.css';
 
 const SensorDataPage = ({ params }: { params: { id: string } }) => {
@@ -44,7 +45,11 @@ const SensorDataPage = ({ params }: { params: { id: string } }) => {
                 </LocalizationProvider>
             </Box>
 
-            <Grid2 container className={classes.graphsContainer}>
+            <Grid2
+                container
+                className={classes.graphsContainer}
+                // sx={{ width: `calc(95vw - ${drawerWidth}` }}
+            >
                 {/* Case when loading data */}
                 {fromServer === null && (
                     <Grid2 xs={12} alignSelf="center">
