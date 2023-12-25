@@ -7,3 +7,5 @@ export type singleItem = {
     timestamp: string;
     value: number;
 };
+
+export type DataItem = {data: singleItem[]} | { error: string };

@@ -1,4 +1,4 @@
-export async function getDayData(sensor: string) {
+export async function getDayData(sensor: string, date: string) {
     const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT_DAY_DATA;
     
     if (!apiUrl) {
@@ -6,7 +6,7 @@ export async function getDayData(sensor: string) {
     }
 
     const res = await fetch(
-        `${apiUrl}${sensor}`,
+        `${apiUrl}?sensorId=${sensor}&date=${date}`,
         {
             cache: 'no-store',
         }

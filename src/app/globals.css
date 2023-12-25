@@ -1,9 +1,12 @@
 :root {
+
   /* Charts sizes */
   --chartHeight: 350px;
   --chartWidth: 400px;
   --chartWidthResponsive: 80vw;
   --rangePickerWidth: var(--chartWidth);
+
+  /* Open street maps different colors */
   --leaflet-tile-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }
 

@@ -1,0 +1,19 @@
+.graphsContainer {
+    width: 95vw;
+    min-height: 85vh;
+    height: fit-content;
+    margin: auto;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 0 0;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
