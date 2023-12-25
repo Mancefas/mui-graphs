@@ -30,6 +30,10 @@ const drawer = (date: string, updateDate: (value: string) => void) => (
         <Toolbar />
         <Divider />
         <List>
+            {/* Change date for day hourly charts */}
+            <ListItem>
+                <Typography>Paros duomenys</Typography>
+            </ListItem>
             <ListItem>
                 <DayPicker
                     value={date}
@@ -37,6 +41,8 @@ const drawer = (date: string, updateDate: (value: string) => void) => (
                     label="Pakeisti datą"
                 />
             </ListItem>
+
+            <Divider />
             {['Day range'].map((text, index) => (
                 <ListItem key={text} disablePadding>
                     <ListItemButton>
