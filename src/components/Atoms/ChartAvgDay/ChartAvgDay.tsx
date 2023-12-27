@@ -1,11 +1,12 @@
-import { LineChart } from '@mui/x-charts/LineChart';
+import { BarChart } from '@mui/x-charts';
 import { singleItem } from '@/types/chartArray';
 
-export type DayHourlyChartTypes = {
+export type ChartAvgDayTypes = {
     array: singleItem[];
 };
 
-export default function DayHourlyChart({ array }: DayHourlyChartTypes) {
+export default function ChartAvgDay({ array }: ChartAvgDayTypes) {
+    // console.log(array);
     const time = array.map((item) => new Date(item.time));
     const mapedData = array.map((item) => item.value);
     const color =
@@ -38,15 +39,15 @@ export default function DayHourlyChart({ array }: DayHourlyChartTypes) {
     };
 
     return (
-        <LineChart
+        <BarChart
             // leftAxis={null}
             xAxis={[
                 {
                     id: 'time',
                     data: time,
-                    scaleType: 'time',
+                    scaleType: 'band',
                     label: 'Valandos paroje',
-                    valueFormatter: (date) => date.getUTCHours().toString(),
+                    valueFormatter: (date) => date.getUTCDate().toString(),
                 },
             ]}
             series={[seriesD]}
