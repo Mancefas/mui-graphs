@@ -20,39 +20,24 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { useGraphDayData } from '@/store/graphDayData';
-import DayPicker from '@/components/Atoms/DayPicker/DayPicker';
+import DayPicking from '@/components/Molecules/DayPicking/DayPicking';
+import DayRangePicking from '@/components/Molecules/DayRangePicking/DayRangePicking';
 
 export const drawerWidth = 240;
 
-const drawer = (date: string, updateDate: (value: string) => void) => (
-    <div>
+const drawer = (
+    <>
         <Toolbar />
         <Divider />
         <List>
             {/* Change date for day hourly charts */}
             <ListItem>
-                <Typography>Paros duomenys</Typography>
+                <DayPicking />
             </ListItem>
-            <ListItem>
-                <DayPicker
-                    value={date}
-                    setValue={updateDate}
-                    label="Pakeisti datą"
-                />
-            </ListItem>
-
             <Divider />
-            {['Day range'].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItemButton>
-                </ListItem>
-            ))}
+            <ListItem>
+                <DayRangePicking />
+            </ListItem>
         </List>
         <Divider />
         <List>
@@ -69,12 +54,11 @@ const drawer = (date: string, updateDate: (value: string) => void) => (
                 )
             )}
         </List>
-    </div>
+    </>
 );
 
 const SideDrawer = ({ children }: { children: React.ReactNode }) => {
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-    const { date, updateDate } = useGraphDayData();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -121,7 +105,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                 variant="permanent"
                 anchor="left"
             >
-                {drawer(date, updateDate)}
+                {drawer}
             </Drawer>
 
             {/* On smaller screen */}
@@ -142,7 +126,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                     },
                 }}
             >
-                {drawer(date, updateDate)}
+                {drawer}
             </Drawer>
             <Box
                 component="main"
