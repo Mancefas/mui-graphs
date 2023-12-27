@@ -1,6 +1,8 @@
 import { LineChart } from '@mui/x-charts/LineChart';
 import { singleItem } from '@/types/chartArray';
 
+import { chartColor } from '@/store/common';
+
 export type DayHourlyChartTypes = {
     array: singleItem[];
 };
@@ -8,24 +10,8 @@ export type DayHourlyChartTypes = {
 export default function DayHourlyChart({ array }: DayHourlyChartTypes) {
     const time = array.map((item) => new Date(item.time));
     const mapedData = array.map((item) => item.value);
-    const color =
-        array[0].name === 'CO'
-            ? '#9370DB'
-            : array[0].name === 'NO₂'
-            ? '#006400'
-            : array[0].name === 'O₃'
-            ? '#98FB98'
-            : array[0].name === 'SO₂'
-            ? '#FFDAB9'
-            : array[0].name === 'KD₂.₅'
-            ? '#FFB6C1'
-            : array[0].name === 'KD₁₀'
-            ? '#4682B4'
-            : array[0].name === 'Temperatūra'
-            ? '#F08080'
-            : array[0].name === 'Drėgnumas'
-            ? '#00BFFF'
-            : 'green';
+
+    const color = chartColor(array[0].name);
 
     const seriesD = {
         id: array[0].name.toString(),

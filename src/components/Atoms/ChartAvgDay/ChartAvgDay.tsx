@@ -1,32 +1,17 @@
 import { BarChart } from '@mui/x-charts';
 import { singleItem } from '@/types/chartArray';
 
+import { chartColor } from '@/store/common';
+
 export type ChartAvgDayTypes = {
     array: singleItem[];
 };
 
 export default function ChartAvgDay({ array }: ChartAvgDayTypes) {
-    // console.log(array);
     const time = array.map((item) => new Date(item.time));
     const mapedData = array.map((item) => item.value);
-    const color =
-        array[0].name === 'CO'
-            ? '#9370DB'
-            : array[0].name === 'NO₂'
-            ? '#006400'
-            : array[0].name === 'O₃'
-            ? '#98FB98'
-            : array[0].name === 'SO₂'
-            ? '#FFDAB9'
-            : array[0].name === 'KD₂.₅'
-            ? '#FFB6C1'
-            : array[0].name === 'KD₁₀'
-            ? '#4682B4'
-            : array[0].name === 'Temperatūra'
-            ? '#F08080'
-            : array[0].name === 'Drėgnumas'
-            ? '#00BFFF'
-            : 'green';
+
+    const color = chartColor(array[0].name);
 
     const seriesD = {
         id: array[0].name.toString(),
@@ -46,7 +31,7 @@ export default function ChartAvgDay({ array }: ChartAvgDayTypes) {
                     id: 'time',
                     data: time,
                     scaleType: 'band',
-                    label: 'Valandos paroje',
+                    label: 'Dienos',
                     valueFormatter: (date) => date.getUTCDate().toString(),
                 },
             ]}
