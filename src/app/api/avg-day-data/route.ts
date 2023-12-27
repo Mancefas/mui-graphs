@@ -16,16 +16,36 @@ export async function GET(request: NextRequest) {
     const connection = mysql.createConnection(dbConfig);
     const sensorID = request.nextUrl.searchParams.get('sensorId');
     const cleanedSensorId = sensorID?.replace(/"';/g, '');
-    const newDate = request.nextUrl.searchParams.get('date');
-    const cleanedNewDate = newDate?.replace(/"';/g, '');
+    const dateFrom = request.nextUrl.searchParams.get('dateFrom');
+    const cleanedDateFrom = dateFrom?.replace(/"';/g, '');
+    const dateTo = request.nextUrl.searchParams.get('dateTo');
+    const cleanedDateTo = dateTo?.replace(/"';/g, '');
 
-    const query = `SELECT DISTINCT idLocation, idMeasurement, idData, timestamp AS time, value, name, measure FROM Location 
-    JOIN Sensor ON Sensor.fkLocation = Location.idLocation 
-    JOIN Measurement ON Measurement.fkLocation = Location.idLocation 
-    JOIN Data ON  Data.fkMeasurement = Measurement.idMeasurement 
-    JOIN Parameter ON Parameter.idParameter = Data.fkParameter 
-    WHERE Location.idLocation = ${cleanedSensorId} AND DATE(timestamp) = '${cleanedNewDate}' 
-    ORDER BY Data.fkParameter, timestamp`
+    const query = `SELECT
+    Location.idLocation,
+    Measurement.idMeasurement,
+    Data.idData,
+    DATE_FORMAT(DATE(timestamp), '%Y-%m-%d') AS time,
+    AVG(Data.value) AS value,
+    Parameter.name,
+    Parameter.measure
+  FROM
+    Location
+  JOIN
+    Sensor ON Sensor.fkLocation = Location.idLocation
+  JOIN
+    Measurement ON Measurement.fkLocation = Location.idLocation
+  JOIN
+    Data ON Data.fkMeasurement = Measurement.idMeasurement
+  JOIN
+    Parameter ON Parameter.idParameter = Data.fkParameter
+  WHERE
+    Location.idLocation = ${cleanedSensorId} AND
+    DATE(timestamp) BETWEEN '${cleanedDateFrom}' AND '${cleanedDateTo}'
+  GROUP BY
+    Data.fkParameter, time
+   ORDER BY
+   name, timestamp`
 
     try {
       const results = await new Promise<any[] | any>((resolve, reject) => {
@@ -55,7 +75,6 @@ export async function GET(request: NextRequest) {
           );
           uniqueArrays.push(filteredArray);
       }
-      
       return NextResponse.json({data: uniqueArrays}, { status: 200 });
   } catch (error) {
       console.error(error);

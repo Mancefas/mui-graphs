@@ -4,7 +4,7 @@ export type singleItem = {
     idMeasurement: number;
     measure: string;
     name: string;
-    timestamp: string;
+    time: string;
     value: number;
 };
 

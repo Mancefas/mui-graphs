@@ -1,6 +1,6 @@
-export async function getDayData(sensor: string, date: string) {
+export async function getDayData(sensor: string, date: string | null) {
     const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT_DAY_DATA;
-    
+
     if (!apiUrl) {
         throw new Error('API_URL is not defined');
     }
