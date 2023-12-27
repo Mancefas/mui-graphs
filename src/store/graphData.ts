@@ -7,6 +7,7 @@ interface graphData {
   endRangeDay: string | null;
   graphData: DataItem | null;
   avgGraphData: DataItem | null;
+  showGraph: string;
   updateDate: (newDate: string) => void;
   setStartRangeDay: (newDate: string) => void;
   setEndRangeDay: (newDate: string) => void;
@@ -20,9 +21,10 @@ export const useGraphData = create<graphData>()((set) => ({
   endRangeDay: '2022-01-18',
   graphData: null,
   avgGraphData: null,
-  updateDate: (newDate: string) => set(() => ({date : newDate, startRangeDay: null, endRangeDay: null })),
-  setStartRangeDay: (newDate: string) => set(() => ({startRangeDay: newDate, date: null, graphData: null})),
-  setEndRangeDay: (newDate: string) => set(() => ({endRangeDay: newDate, date: null, graphData: null})),
+  showGraph: 'hourly',
+  updateDate: (newDate: string) => set(() => ({date : newDate, showGraph: 'hourly'})),
+  setStartRangeDay: (newDate: string) => set(() => ({startRangeDay: newDate, showGraph: 'daily'})),
+  setEndRangeDay: (newDate: string) => set(() => ({endRangeDay: newDate, showGraph: 'daily'})),
   setGraphData: (data: DataItem) => set(() => ({graphData: data})),
   setAvgGraphData: (data: DataItem) => set(() => ({avgGraphData: data})),
 }))
