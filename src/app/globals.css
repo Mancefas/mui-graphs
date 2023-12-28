@@ -10,6 +10,11 @@
   --leaflet-tile-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }
 
+body {
+  padding: 0;
+  margin: 0;
+}
+
 /* change open street maps to dark mode if it is selected on pc */
 /* @media (prefers-color-scheme: dark) {
   .leaflet-layer,
