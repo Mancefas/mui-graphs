@@ -6,7 +6,7 @@
     margin: auto;
 }
 
-.inputContainer {
+.dataDateContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
