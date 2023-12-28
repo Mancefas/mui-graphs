@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import DayPicker from '@/components/Atoms/DayPicker/DayPicker';
 import { useGraphData } from '@/store/graphData';
 
@@ -8,8 +8,6 @@ const DayRangePicking = () => {
     return (
         <>
             <Stack spacing={2}>
-                <Typography>Dienų duomenys</Typography>
-
                 <DayPicker
                     value={startRangeDay}
                     setValue={setStartRangeDay}

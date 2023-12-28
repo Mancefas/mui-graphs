@@ -13,6 +13,7 @@ interface graphData {
   setEndRangeDay: (newDate: string) => void;
   setGraphData: (data: DataItem) => void;
   setAvgGraphData: (data: DataItem) => void;
+  setShowGraph: (newGraph: string) => void;
 }
 
 export const useGraphData = create<graphData>()((set) => ({
@@ -27,4 +28,5 @@ export const useGraphData = create<graphData>()((set) => ({
   setEndRangeDay: (newDate: string) => set(() => ({endRangeDay: newDate, showGraph: 'daily'})),
   setGraphData: (data: DataItem) => set(() => ({graphData: data})),
   setAvgGraphData: (data: DataItem) => set(() => ({avgGraphData: data})),
+  setShowGraph: (newGraph: string) => set(() => ({showGraph: newGraph})),
 }))
