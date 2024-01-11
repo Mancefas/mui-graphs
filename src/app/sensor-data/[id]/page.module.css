@@ -1,12 +1,20 @@
 .graphsContainer {
     /* have width defined in JS page component */
     /* width: 95vw; */
-    min-height: 80vh;
-    height: fit-content;
+    height: 80vh;
+    /* height: fit-content; */
     margin: auto;
 }
 
-.inputContainer {
+
+/* setting height to children, because charts are svg and they don't show on mobile   */
+.graphsContainer > * {
+    @media screen and (max-width: 600px) {
+            min-height: 250px;
+    }
+}
+
+.dataDateContainer {
     display: flex;
     flex-direction: row;
     align-items: center;

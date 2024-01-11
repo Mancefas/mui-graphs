@@ -15,48 +15,72 @@ import {
     IconButton,
     Typography,
     AppBar,
+    Accordion,
+    AccordionSummary,
+    AccordionDetails,
 } from '@mui/material';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { useGraphDayData } from '@/store/graphDayData';
-import DayPicker from '@/components/Atoms/DayPicker/DayPicker';
+import DayPicking from '@/components/Molecules/DayPicking/DayPicking';
+import DayRangePicking from '@/components/Molecules/DayRangePicking/DayRangePicking';
+import { useGraphData } from '@/store/graphData';
 
 export const drawerWidth = 240;
 
-const drawer = (date: string, updateDate: (value: string) => void) => (
-    <div>
+const drawer = (
+    expanded: string | false,
+    handleChange: (
+        panel: string
+    ) => (event: React.SyntheticEvent, newExpanded: boolean) => void
+) => (
+    <>
         <Toolbar />
         <Divider />
         <List>
             {/* Change date for day hourly charts */}
-            <ListItem>
-                <Typography>Paros duomenys</Typography>
-            </ListItem>
-            <ListItem>
-                <DayPicker
-                    value={date}
-                    setValue={updateDate}
-                    label="Pakeisti datą"
-                />
-            </ListItem>
+            <Accordion
+                expanded={expanded === 'hourly'}
+                onChange={handleChange('hourly')}
+                style={{ boxShadow: 'none' }}
+            >
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1d-content"
+                    id="panel1d-header"
+                >
+                    <Typography>Paros duomenys</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <DayPicking />
+                </AccordionDetails>
+            </Accordion>
 
             <Divider />
-            {['Day range'].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItemButton>
-                </ListItem>
-            ))}
+
+            {/* Change date for day avg charts */}
+            <Accordion
+                style={{ boxShadow: 'none' }}
+                expanded={expanded === 'daily'}
+                onChange={handleChange('daily')}
+            >
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2d-content"
+                    id="panel2d-header"
+                >
+                    <Typography>Dienų duomenys</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <DayRangePicking />
+                </AccordionDetails>
+            </Accordion>
         </List>
         <Divider />
         <List>
-            {['Only 1 graph', 'Add upper max', 'Add lower max'].map(
+            {['1as grafikas', 'Viršutinis limitas', 'Apatinis limitas'].map(
                 (text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
@@ -69,12 +93,22 @@ const drawer = (date: string, updateDate: (value: string) => void) => (
                 )
             )}
         </List>
-    </div>
+    </>
 );
 
 const SideDrawer = ({ children }: { children: React.ReactNode }) => {
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-    const { date, updateDate } = useGraphDayData();
+    const { showGraph, setShowGraph } = useGraphData();
+    const [expanded, setExpanded] = useState<string | false>(showGraph);
+
+    const handleChange =
+        (panel: string) =>
+        (event: React.SyntheticEvent, newExpanded: boolean) => {
+            if (newExpanded) {
+                setShowGraph(panel);
+            }
+            setExpanded(newExpanded ? panel : false);
+        };
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -121,7 +155,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                 variant="permanent"
                 anchor="left"
             >
-                {drawer(date, updateDate)}
+                {drawer(expanded, handleChange)}
             </Drawer>
 
             {/* On smaller screen */}
@@ -142,7 +176,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                     },
                 }}
             >
-                {drawer(date, updateDate)}
+                {drawer(expanded, handleChange)}
             </Drawer>
             <Box
                 component="main"

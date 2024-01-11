@@ -5,7 +5,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 
 type DayPickerProps = {
-    value: string;
+    value: string | null;
     setValue: (value: string) => void;
     label: string;
 };
@@ -18,7 +18,7 @@ const DayPicker = ({ value, setValue, label }: DayPickerProps) => {
                     disableFuture
                     label={label}
                     format="YYYY-MM-DD"
-                    value={dayjs(value)}
+                    value={value ? dayjs(value) : null}
                     onChange={(newValue) =>
                         setValue(dayjs(newValue).format('YYYY-MM-DD'))
                     }

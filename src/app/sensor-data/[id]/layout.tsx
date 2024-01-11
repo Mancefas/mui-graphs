@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import SideDrawer from '@/components/Molecules/SideDrawer/SideDrawer';
+import SideDrawer from '@/components/Organisms/SideDrawer/SideDrawer';
 
 export default function SensorDataPage({
     children,
