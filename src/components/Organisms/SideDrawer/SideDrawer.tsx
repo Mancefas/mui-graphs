@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
     Box,
     Drawer,
@@ -22,6 +23,7 @@ import {
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import MapIcon from '@mui/icons-material/Map';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import DayPicking from '@/components/Molecules/DayPicking/DayPicking';
@@ -34,7 +36,8 @@ const drawer = (
     expanded: string | false,
     handleChange: (
         panel: string
-    ) => (event: React.SyntheticEvent, newExpanded: boolean) => void
+    ) => (event: React.SyntheticEvent, newExpanded: boolean) => void,
+    router: any
 ) => (
     <>
         <Toolbar />
@@ -93,6 +96,19 @@ const drawer = (
                 )
             )}
         </List>
+        <Box mt="auto">
+            <Divider sx={{ marginTop: 'auto' }} />
+            <List>
+                <ListItem disablePadding>
+                    <ListItemButton onClick={() => router.push('/')}>
+                        <ListItemIcon>
+                            <MapIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Žemėlapis'} />
+                    </ListItemButton>
+                </ListItem>
+            </List>
+        </Box>
     </>
 );
 
@@ -100,6 +116,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
     const { showGraph, setShowGraph } = useGraphData();
     const [expanded, setExpanded] = useState<string | false>(showGraph);
+    const router = useRouter();
 
     const handleChange =
         (panel: string) =>
@@ -155,7 +172,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                 variant="permanent"
                 anchor="left"
             >
-                {drawer(expanded, handleChange)}
+                {drawer(expanded, handleChange, router)}
             </Drawer>
 
             {/* On smaller screen */}
@@ -176,7 +193,7 @@ const SideDrawer = ({ children }: { children: React.ReactNode }) => {
                     },
                 }}
             >
-                {drawer(expanded, handleChange)}
+                {drawer(expanded, handleChange, router)}
             </Drawer>
             <Box
                 component="main"
