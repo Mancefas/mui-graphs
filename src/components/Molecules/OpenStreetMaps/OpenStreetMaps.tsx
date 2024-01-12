@@ -17,8 +17,8 @@ export default async function OpenStreetMaps({}: OpenStreetMapsProps) {
 
     return (
         <>
-            {data.error ? (
-                <Typography variant="h3" color="red">
+            {data?.error ? (
+                <Typography variant="h5" color="red">
                     {data.error}
                 </Typography>
             ) : (

@@ -1,4 +1,4 @@
-import { Typography, CircularProgress, Box } from '@mui/material';
+import { Typography, CircularProgress } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { DataItem } from '@/types/chartArray';
 

@@ -1,12 +1,12 @@
 import { Marker, Popup } from 'react-leaflet';
-import { Typography, Chip, Stack } from '@mui/material';
+import { useState } from 'react';
+import { Typography, Chip, Stack, Box, CircularProgress } from '@mui/material';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 
 import { markerPointsType } from '@/types/markerPointsTypes';
 
 const MapMarker = ({
-    idLocation,
     idSensor,
     active,
     adress,
@@ -17,15 +17,9 @@ const MapMarker = ({
     operational,
     type,
 }: markerPointsType) => {
+    const [loading, setLoading] = useState<boolean>(false);
     return (
-        <Marker
-            position={[latitude, longitude]}
-            // eventHandlers={{
-            //     click: () => {
-            //         console.log(idLocation);
-            //     },
-            // }}
-        >
+        <Marker position={[latitude, longitude]}>
             <Popup>
                 <Stack spacing={2}>
                     <Typography variant="subtitle1">
@@ -63,11 +57,19 @@ const MapMarker = ({
                                 .toString()}
                         </Typography>
                     </Stack>
-                    <Link href={`/sensor-data/${idSensor}`}>
-                        <Typography variant="subtitle1">
-                            Peržiūrėti duomenis
-                        </Typography>
-                    </Link>
+                    <Stack direction="row" gap="1">
+                        <Link
+                            href={`/sensor-data/${idSensor}`}
+                            onClick={() => setLoading(true)}
+                        >
+                            <Typography variant="subtitle1">
+                                Peržiūrėti duomenis
+                            </Typography>
+                        </Link>
+                        <Box sx={{ minHeight: '28px' }}>
+                            {loading && <CircularProgress size={20} />}
+                        </Box>
+                    </Stack>
                 </Stack>
             </Popup>
         </Marker>
